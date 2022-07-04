@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Elenco materiali</title>
+</head>
+
+<body>
+	<div>
+		<a href="/">Home</a>
+	</div>
+	<h4>Elenco materiali</h4>
+	<ul>
+		<li th:each="materiale: ${materiali}">
+			<a th:href="@{'/materiale'+'/'+${materiale.id}}" th:text="${materiale.nome}">Cotone</a>
+			<a th:href="@{'/toDeleteMateriale'+'/'+${materiale.id}}" th:text="rimuovi">Rimuovi</a>
+			<a th:href="@{'/toUpdateMateriale'+'/'+${materiale.id}}" th:text="modifica">Modifica</a>
+		</li>
+	</ul>
+</body>
+
+</html>

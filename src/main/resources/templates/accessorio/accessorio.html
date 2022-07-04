@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Accessorio</title>
+</head>
+
+<body>
+	<div>
+		<a href="/">Home</a>
+	</div>
+	<div>
+		<h4>Dettagli accessorio:</h4>
+		<span>
+			<img th:src="@{'/images/' + ${accessorio.nome} +'.jpg'}" width="20%">
+		</span>
+		<div>
+			<strong>Nome: </strong>
+			<span th:text="${accessorio.nome}">Cotone</span>
+		</div>
+		<div><strong>Descrizione: </strong>
+			<span th:text="${accessorio.descrizione}">Descrizione</span>
+		</div>
+		<div><strong>Prezzo: </strong>
+			<span th:text="${accessorio.prezzo}">Prezzo</span>
+		</div>
+		<div><strong>Materiali usati: </strong>
+			<span th:each="materiale: ${accessorio.materiali}">
+				<a th:href="@{'/materiale' + '/' + ${materiale.id}}"
+					th:text="${materiale.nome}" />,
+				</a>
+			</span>
+		</div>
+	</div>
+</body>
+
+</html>

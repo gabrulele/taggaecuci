@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Rimozione accessorio</title>
+</head>
+
+<body>
+	<div>
+		<a th:href="@{/}">Home</a>
+	</div>
+	<h4>Dettaglio accessorio da rimuovere</h4>
+	<div th:object=${accessorio}>
+		<strong>Nome:</strong><span th:text="*{nome}">Cotone</span>
+		<strong>Descrizione:</strong><span th:text="*{descrizione}">Descrizione</span>
+		<strong>Prezzo:</strong><span th:text="*{prezzo}">Prezzo</span>
+		<a th:href="@{'/deleteAccessorio'+'/'+${accessorio.id}}" th:text="conferma">conferma</a>
+	</div>
+</body>
+
+</html>

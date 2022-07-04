@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Elenco magliette</title>
+</head>
+
+<body>
+	<div>
+		<a href="/">Home</a>
+	</div>
+	<h4>Elenco magliette</h4>
+	<ul>
+		<li th:each="maglietta: ${magliette}">
+			<a th:href="@{'/maglietta'+'/'+${maglietta.id}}" th:text="${maglietta.nome}">Tee</a>
+			<a th:href="@{'/toDeleteMaglietta'+'/'+${maglietta.id}}" th:text="rimuovi">Rimuovi</a>
+			<a th:href="@{'/toUpdateMaglietta'+'/'+${maglietta.id}}" th:text="modifica">Modifica</a>
+		</li>
+	</ul>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Materiale</title>
+</head>
+
+<body>
+	<div>
+		<a href="/">Home</a>
+	</div>
+	<div>
+		<h4>Dettagli materiale:</h4>
+		<div>
+			<strong>Nome: </strong>
+			<span th:text="${materiale.nome}">Cotone</span>
+		</div>
+		<div><strong>Descrizione: </strong>
+			 <span th:text="${materiale.descrizione}">Descrizione</span>
+		</div>
+	</div>
+</body>
+
+</html>

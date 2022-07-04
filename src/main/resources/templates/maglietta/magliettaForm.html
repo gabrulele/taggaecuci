@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Inserimento maglietta</title>
+</head>
+
+<body>
+	<div>
+		<a th:href="@{/}">Home</a>
+	</div>
+	<h4>Inserisci nuova maglietta</h4>
+	<form th:action="@{/maglietta}" th:method="POST" th:object="${maglietta}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">ErroreGlobale</p>
+		</div>
+		<div>
+			Nome:
+			<input class="input" type=text th:field="*{nome}" />
+			<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+		</div>
+		<div>
+			Descrizione:
+			<input class="input" type=text th:field="*{descrizione}" />
+		</div>
+		<div>
+			Prezzo:
+			<input class="input" type=text th:field="*{prezzo}" />
+			<div th:if="${#fields.hasErrors('prezzo')}" th:errors="*{prezzo}"></div>
+		</div>
+		<p>
+			<label>Materiali:
+				<input type="checkbox" name="materiali" th:each="materiale: ${materiali}" th:text="${materiale.nome}"
+					th:value="${materiale.id}" th:field="*{materiali}" />
+			</label>
+		</p>
+		<div><button type="submit"> Conferma</button></div>
+	</form>
+</body>
+
+</html>
