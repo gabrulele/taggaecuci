@@ -2,10 +2,15 @@ package it.uniroma3.siw.service;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import it.uniroma3.siw.model.Accessorio;
 import it.uniroma3.siw.model.Collezione;
+import it.uniroma3.siw.model.Maglietta;
 import it.uniroma3.siw.repository.CollezioneRepository;
 
 @Service
@@ -46,6 +51,18 @@ public class CollezioneService {
 	
 	public boolean alreadyExists(Collezione collezione) {
 		return this.collezioneRepository.existsCollezioneByNome(collezione.getNome());
+	}
+
+	public void upadateMaglietteInCollezioni(List<Collezione> collezioni, Maglietta magliettaDaRimuovere) {
+		for(Collezione collezione: collezioni) {
+			collezione.getMagliette().remove(magliettaDaRimuovere);
+		}
+	}
+
+	public void updateAccessoriInCollezioni(List<Collezione> collezioni, Accessorio accessorioDaRimuovere) {
+		for(Collezione collezione: collezioni) {
+			collezione.getAccessori().remove(accessorioDaRimuovere);
+		}
 	}
 
 }

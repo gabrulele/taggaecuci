@@ -2,9 +2,14 @@ package it.uniroma3.siw.service;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import it.uniroma3.siw.model.Accessorio;
+import it.uniroma3.siw.model.Maglietta;
 import it.uniroma3.siw.model.Ordine;
 import it.uniroma3.siw.repository.OrdineRepository;
 
@@ -41,6 +46,18 @@ public class OrdineService {
 		}
 		
 		return ordiniTotali;
+	}
+
+	public void updateMaglietteInOrdini(List<Ordine> ordini, Maglietta maglietta) {
+		for(Ordine ordine: ordini) {
+			ordine.getMagliette().remove(maglietta);
+		}
+	}
+
+	public void updateAccessoriInOrdini(List<Ordine> ordini, Accessorio accessorio) {
+		for(Ordine ordine: ordini) {
+			ordine.getAccessori().remove(accessorio);
+		}
 	}
 
 }

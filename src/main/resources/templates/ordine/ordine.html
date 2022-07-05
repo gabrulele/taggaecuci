@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Ordine</title>
+</head>
+
+<body>
+	<div>
+		<a href="/">Home</a>
+	</div>
+	<div>
+		<h4>Dettagli ordine:</h4>
+		<div>
+			<strong>Id ordine: </strong>
+			<span th:text="${ordine.numeroOrdine}">Id ordine</span>
+		</div>
+		<div>
+			<strong>Recapito telefonico: </strong>
+			<span th:text="${ordine.numeroDiTelefono}">Numero di telefono</span>
+		</div>
+		<div><strong>Magliette ordinate: </strong>
+			<span th:each="maglietta: ${ordine.magliette}">
+				<a th:href="@{'/maglietta' + '/' + ${maglietta.id}}" th:text="${maglietta.nome}" />,</a>
+			</span>
+		</div>
+		<div><strong>Accessori ordinati: </strong>
+			<span th:each="accessorio: ${ordine.accessori}">
+				<a th:href="@{'/accessorio'+'/'+${accessorio.id}}" th:text="${accessorio.nome}" />,</a>
+			</span>
+		</div>
+	</div>
+</body>
+
+</html>

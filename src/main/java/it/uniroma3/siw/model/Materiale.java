@@ -29,10 +29,8 @@ public class Materiale {
 	
 	public Materiale() {}
 
-	public Materiale(Long id, @NotBlank String nome, String descrizione, List<Accessorio> accessori,
+	public Materiale(String nome, String descrizione, List<Accessorio> accessori,
 			List<Maglietta> magliette) {
-		super();
-		this.id = id;
 		this.nome = nome;
 		this.descrizione = descrizione;
 		this.accessori = accessori;

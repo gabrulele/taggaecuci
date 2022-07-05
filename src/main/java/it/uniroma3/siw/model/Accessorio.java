@@ -46,6 +46,14 @@ public class Accessorio {
 		this.materiali = materiali;
 	}
 
+	public List<Collezione> getCollezioni() {
+		return collezioni;
+	}
+
+	public void setCollezioni(List<Collezione> collezioni) {
+		this.collezioni = collezioni;
+	}
+
 	public Long getId() {
 		return id;
 	}

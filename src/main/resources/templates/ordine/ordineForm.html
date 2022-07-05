@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Creazione ordine</title>
+</head>
+
+<body>
+	<div>
+		<a th:href="@{/}">Home</a>
+	</div>
+	<h4>Effetua il tuo ordine dal catalogo</h4>
+	<form th:action="@{/ordine}" th:method="POST" th:object="${ordine}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">ErroreGlobale</p>
+		</div>
+		<div>
+			<strong>Recapito telefonico:</strong>
+			<input class="input" type=text th:field="*{numeroDiTelefono}" />
+			<div th:if="${#fields.hasErrors('numeroDiTelefono')}" th:errors="*{numeroDiTelefono}"></div>
+		</div>
+		<p>
+			<label><strong>Magliette:</strong>
+				<span th:each="maglietta: ${magliette}">
+					<input type="checkbox" name="magliette" th:value="${maglietta.id}" 
+						th:field="*{magliette}" />
+					<img th:src="@{'/images/' + ${maglietta.nome} +'.jpg'}" width="20%">
+				</span>
+			</label>
+		</p>
+		<p>
+			<label><strong>Accessori:</strong>
+				<span th:each="accessorio: ${accessori}">
+					<input type="checkbox" name="accessori" th:value="${accessorio.id}"
+						th:field="*{accessori}" />
+					<img th:src="@{'/images/' + ${accessorio.nome} +'.jpg'}" width="20%">
+				</span>
+			</label>
+		</p>
+		<div><button type="submit"> Conferma</button></div>
+	</form>
+</body>
+
+</html>

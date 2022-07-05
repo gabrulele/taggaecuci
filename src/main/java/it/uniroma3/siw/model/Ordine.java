@@ -1,6 +1,7 @@
 package it.uniroma3.siw.model;
 
 import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,10 +11,14 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Ordine {
+	
+	private static Integer idOrdine=0;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	
+	private Integer numeroOrdine;
 	
 	@NotBlank
 	private String numeroDiTelefono;
@@ -30,6 +35,7 @@ public class Ordine {
 			List<Maglietta> magliette, List<Accessorio> accessori) {
 		super();
 		this.id = id;
+		this.numeroOrdine = Ordine.idOrdine;
 		this.numeroDiTelefono = numeroDiTelefono;
 		this.magliette = magliette;
 		this.accessori = accessori;
@@ -41,6 +47,22 @@ public class Ordine {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public static Integer getIdOrdine() {
+		return idOrdine;
+	}
+
+	public static void setIdOrdine(Integer idOrdine) {
+		Ordine.idOrdine = idOrdine;
+	}
+
+	public Integer getNumeroOrdine() {
+		return numeroOrdine;
+	}
+
+	public void setNumeroOrdine(Integer numeroOrdine) {
+		this.numeroOrdine = numeroOrdine;
 	}
 
 	public String getNumeroDiTelefono() {

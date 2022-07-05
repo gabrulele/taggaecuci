@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import it.uniroma3.siw.controller.validator.AccessorioValidator;
 import it.uniroma3.siw.model.Accessorio;
 import it.uniroma3.siw.service.AccessorioService;
+import it.uniroma3.siw.service.CollezioneService;
 import it.uniroma3.siw.service.MaterialeService;
+import it.uniroma3.siw.service.OrdineService;
 
 @Controller
 public class AccessorioController {
@@ -26,6 +28,12 @@ public class AccessorioController {
 	
 	@Autowired
 	private MaterialeService materialeService;
+	
+	@Autowired
+	private CollezioneService collezioneService;
+	
+	@Autowired
+	private OrdineService ordineService;
 	
 	@Autowired
 	private AccessorioValidator accessorioValidator;
@@ -39,6 +47,9 @@ public class AccessorioController {
 	
 	@GetMapping("/deleteAccessorio/{id}")
 	public String deleteAccessorio(@PathVariable("id") Long id, Model model) {
+		Accessorio accessorio = accessorioService.findById(id);
+		collezioneService.updateAccessoriInCollezioni(accessorio.getCollezioni(), accessorio);
+		ordineService.updateAccessoriInOrdini(accessorio.getOrdini(), accessorio);
 		accessorioService.deleteById(id);
 		model.addAttribute("accessori", accessorioService.findAll());
 		return "/accessorio/accessori.html";
@@ -72,6 +83,8 @@ public class AccessorioController {
 			model.addAttribute("accessorio", accessorio);
 			return "/accessorio/accessorio.html";
 		}
+//		model.addAttribute("accessorio", new Accessorio());
+     	model.addAttribute("materiali", materialeService.findAll());
 		return "/accessorio/accessorioForm.html";
 	}
 	

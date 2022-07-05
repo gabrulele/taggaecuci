@@ -18,9 +18,10 @@ import it.uniroma3.siw.model.Maglietta;
 import it.uniroma3.siw.service.CollezioneService;
 import it.uniroma3.siw.service.MagliettaService;
 import it.uniroma3.siw.service.MaterialeService;
+import it.uniroma3.siw.service.OrdineService;
 
 @Controller
-public class magliettaController {
+public class MagliettaController {
 
 	@Autowired
 	private MagliettaService magliettaService;
@@ -30,6 +31,9 @@ public class magliettaController {
 	
 	@Autowired
 	private CollezioneService collezioneService;
+	
+	@Autowired
+	private OrdineService ordineService;
 	
 	@Autowired
 	private MagliettaValidator magliettaValidator;
@@ -43,7 +47,9 @@ public class magliettaController {
 	
 	@GetMapping("/deleteMaglietta/{id}")
 	public String deleteMaglietta(@PathVariable("id") Long id, Model model) {
-		//collezioneService.upadateCollezioni();
+		Maglietta maglietta = magliettaService.findById(id);
+		collezioneService.upadateMaglietteInCollezioni(maglietta.getCollezioni(), maglietta);
+		ordineService.updateMaglietteInOrdini(maglietta.getOrdini(), maglietta);
 		magliettaService.deleteById(id);
 		model.addAttribute("magliette", magliettaService.findAll());
 		return "/maglietta/magliette.html";
