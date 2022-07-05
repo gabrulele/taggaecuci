@@ -32,6 +32,8 @@ public class MaterialeController {
 	
 	@GetMapping("/deleteMateriale/{id}")
 	public String deleteMateriale(@PathVariable("id") Long id, Model model) {
+		Materiale materiale = materialeService.findById(id);
+		materialeService.updateCollezioneEOrdini(materiale.getAccessori(), materiale.getMagliette());
 		materialeService.deleteById(id);
 		model.addAttribute("materiali", materialeService.findAll());
 		return "/materiale/materiali.html";
