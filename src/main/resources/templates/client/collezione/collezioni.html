@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Elenco collezioni</title>
+</head>
+
+<body>
+	<div>
+		<a th:href="@{/indexClient}">Home</a>
+	</div>
+	<h4>Elenco collezioni</h4>
+	<ul>
+		<li th:each="collezione: ${collezioni}">
+			<a th:href="@{'/collezioneClient'+'/'+${collezione.id}}" th:text="${collezione.nome}">Tee</a>
+		</li>
+	</ul>
+</body>
+
+</html>

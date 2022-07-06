@@ -27,7 +27,7 @@ public class MaterialeController {
 	public String toDeleteMateriale(@PathVariable("id") Long id, Model model) {
 		Materiale materiale = materialeService.findById(id);
 		model.addAttribute("materiale", materiale);
-		return "/materiale/toDeleteMateriale.html";
+		return "/admin/materiale/toDeleteMateriale.html";
 	}
 	
 	@GetMapping("/deleteMateriale/{id}")
@@ -36,14 +36,14 @@ public class MaterialeController {
 		materialeService.updateCollezioneEOrdini(materiale.getAccessori(), materiale.getMagliette());
 		materialeService.deleteById(id);
 		model.addAttribute("materiali", materialeService.findAll());
-		return "/materiale/materiali.html";
+		return "/admin/materiale/materiali.html";
 	}
 	
 	@GetMapping("/toUpdateMateriale/{id}")
 	public String toUpdateMateriale(@PathVariable("id") Long id, Model model) {
 		Materiale materiale = materialeService.findById(id);
 		model.addAttribute("materiale", materiale);
-		return "/materiale/materialeFormDiModifica.html";
+		return "/admin/materiale/materialeFormDiModifica.html";
 	}
 	
 	@PostMapping("/updateMateriale/{id}")
@@ -52,9 +52,9 @@ public class MaterialeController {
 		if(!bindingResult.hasErrors()) {
 			materialeService.save(materiale);
 			model.addAttribute("materiale", materiale);
-			return "/materiale/materiale.html";
+			return "/admin/materiale/materiale.html";
 		}
-		return "/materiale/materialeFormDiModifica.html";
+		return "/admin/materiale/materialeFormDiModifica.html";
 	}
 	
 	@PostMapping("/materiale")
@@ -64,29 +64,57 @@ public class MaterialeController {
 		if(!bindingResult.hasErrors()) {
 			materialeService.save(materiale);
 			model.addAttribute("materiale", materiale);
-			return "/materiale/materiale.html";
+			return "/admin/materiale/materiale.html";
 		}
-		return "/materiale/materialeForm.html";
+		return "/admin/materiale/materialeForm.html";
 	}
 	
 	@GetMapping("/materiali")
 	public String getAllMateriali(Model model) {
 		List<Materiale> materiali = materialeService.findAll();
 		model.addAttribute("materiali", materiali);
-		return "/materiale/materiali.html";
+		return "/admin/materiale/materiali.html";
+	}
+	
+	@GetMapping("/materialiUser")
+	public String getAllMaterialiUser(Model model) {
+		List<Materiale> materiali = materialeService.findAll();
+		model.addAttribute("materiali", materiali);
+		return "/user/materiale/materiali.html";
+	}
+	
+	@GetMapping("/materialiClient")
+	public String getAllMaterialiClient(Model model) {
+		List<Materiale> materiali = materialeService.findAll();
+		model.addAttribute("materiali", materiali);
+		return "/client/materiale/materiali.html";
+	}
+	
+	@GetMapping("/materialeClient/{id}")
+	public String getMaterialeClient(@PathVariable("id") Long id, Model model) {
+		Materiale materiale = materialeService.findById(id);
+		model.addAttribute("materiale", materiale);
+		return "/client/materiale/materiale.html";
+	}
+	
+	@GetMapping("/materialeUser/{id}")
+	public String getMaterialeUser(@PathVariable("id") Long id, Model model) {
+		Materiale materiale = materialeService.findById(id);
+		model.addAttribute("materiale", materiale);
+		return "/user/materiale/materiale.html";
 	}
 	
 	@GetMapping("/materiale/{id}")
-	public String getAllMateriali(@PathVariable("id") Long id, Model model) {
+	public String getMateriale(@PathVariable("id") Long id, Model model) {
 		Materiale materiale = materialeService.findById(id);
 		model.addAttribute("materiale", materiale);
-		return "/materiale/materiale.html";
+		return "/admin/materiale/materiale.html";
 	}
 	
 	@GetMapping("/materialeForm")
 	public String startMateriale(Model model) {
 		model.addAttribute("materiale", new Materiale());
-		return "/materiale/materialeForm.html";
+		return "/admin/materiale/materialeForm.html";
 	}
 	
 }

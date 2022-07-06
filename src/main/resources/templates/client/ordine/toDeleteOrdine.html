@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Rimozione ordine</title>
+</head>
+
+<body>
+	<div>
+		<a th:href="@{/indexClient}">Home</a>
+	</div>
+	<h4>Ordine da rimuovere</h4>
+	<div th:object=${ordine}>
+		<strong>Id ordine:</strong><span th:text="*{numeroOrdine}">Numero ordine</span>
+		<a th:href="@{'/deleteOrdine'+'/'+${ordine.id}}" th:text="conferma">conferma</a>
+	</div>
+</body>
+
+</html>

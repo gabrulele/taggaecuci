@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Inserimento materiale</title>
+</head>
+
+<body>
+	<div>
+		<a th:href="@{/indexAdmin}">Home</a>
+	</div>
+	<h4>Inserisci nuovo materiale</h4>
+	<form th:action="@{/materiale}" th:method="POST" th:object="${materiale}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">ErroreGlobale</p>
+		</div>
+		<div>
+			Nome:
+			<input class="input" type=text th:field="*{nome}" />
+			<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+		</div>
+		<div>
+			Descrizione:
+			<input class="input" type=text th:field="*{descrizione}" />
+			<div th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></div>
+		</div>
+		<div><button type="submit"> Conferma</button></div>
+	</form>
+</body>
+
+</html>

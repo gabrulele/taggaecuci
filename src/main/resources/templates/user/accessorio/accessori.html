@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Elenco accessori</title>
+</head>
+
+<body>
+	<div>
+		<a th:href="@{/indexUser}">Home</a>
+	</div>
+	<h4>Elenco accessori</h4>
+	<ul>
+		<li th:each="accessorio: ${accessori}">
+			<a th:href="@{'/accessorioUser'+'/'+${accessorio.id}}" th:text="${accessorio.nome}">Bracciale</a>
+		</li>
+	</ul>
+</body>
+
+</html>

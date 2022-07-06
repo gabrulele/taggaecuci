@@ -24,7 +24,7 @@ public class InitializerController {
 		materialeService.save(mat2);
 		materialeService.save(mat3);
 		
-		return "/index";
+		return "/admin/index";
 	}
 
 }

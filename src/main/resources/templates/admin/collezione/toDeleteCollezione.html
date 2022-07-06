@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Rimozione collezione</title>
+</head>
+
+<body>
+	<div>
+		<a th:href="@{/indexAdmin}">Home</a>
+	</div>
+	<h4>Dettaglio collezione da rimuovere</h4>
+	<div th:object=${collezione}>
+		<strong>Nome:</strong><span th:text="*{nome}">Nome</span>
+		<strong>Stagione:</strong><span th:text="*{stagione}">Stagione</span>
+		<a th:href="@{'/deleteCollezione'+'/'+${collezione.id}}" th:text="conferma">conferma</a>
+	</div>
+</body>
+
+</html>

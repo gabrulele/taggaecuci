@@ -42,7 +42,7 @@ public class MagliettaController {
 	public String toDeleteMaglietta(@PathVariable("id") Long id, Model model) {
 		Maglietta maglietta = magliettaService.findById(id);
 		model.addAttribute("maglietta", maglietta);
-		return "/maglietta/toDeleteMaglietta.html";
+		return "/admin/maglietta/toDeleteMaglietta.html";
 	}
 	
 	@GetMapping("/deleteMaglietta/{id}")
@@ -52,7 +52,7 @@ public class MagliettaController {
 		ordineService.updateMaglietteInOrdini(maglietta.getOrdini(), maglietta);
 		magliettaService.deleteById(id);
 		model.addAttribute("magliette", magliettaService.findAll());
-		return "/maglietta/magliette.html";
+		return "/admin/maglietta/magliette.html";
 	}
 	
 	@GetMapping("/toUpdateMaglietta/{id}")
@@ -60,7 +60,7 @@ public class MagliettaController {
 		Maglietta maglietta = magliettaService.findById(id);
 		model.addAttribute("maglietta", maglietta);
 		model.addAttribute("materiali", materialeService.findAll());
-		return "/maglietta/magliettaFormDiModifica.html";
+		return "/admin/maglietta/magliettaFormDiModifica.html";
 	}
 	
 	@PostMapping("/updateMaglietta/{id}")
@@ -69,9 +69,9 @@ public class MagliettaController {
 		if(!bindingResult.hasErrors()) {
 			magliettaService.save(maglietta);
 			model.addAttribute("maglietta", maglietta);
-			return "/maglietta/maglietta.html";
+			return "/admin/maglietta/maglietta.html";
 		}
-		return "/maglietta/magliettaFormDiModifica.html";
+		return "/admin/maglietta/magliettaFormDiModifica.html";
 	}
 	
 	@PostMapping("/maglietta")
@@ -81,30 +81,58 @@ public class MagliettaController {
 		if(!bindingResult.hasErrors()) {
 			magliettaService.save(maglietta);
 			model.addAttribute("maglietta", maglietta);
-			return "/maglietta/maglietta.html";
+			return "admin/maglietta/maglietta.html";
 		}
-		return "/maglietta/magliettaForm.html";
+		return "/admin/maglietta/magliettaForm.html";
 	}
 	
 	@GetMapping("/magliette")
-	public String getAllMateriali(Model model) {
+	public String getAllMagliette(Model model) {
 		List<Maglietta> magliette = magliettaService.findAll();
 		model.addAttribute("magliette", magliette);
-		return "/maglietta/magliette.html";
+		return "/admin/maglietta/magliette.html";
+	}
+	
+	@GetMapping("/maglietteUser")
+	public String getAllMaglietteUser(Model model) {
+		List<Maglietta> magliette = magliettaService.findAll();
+		model.addAttribute("magliette", magliette);
+		return "/user/maglietta/magliette.html";
+	}
+	
+	@GetMapping("/maglietteClient")
+	public String getAllMaglietteClient(Model model) {
+		List<Maglietta> magliette = magliettaService.findAll();
+		model.addAttribute("magliette", magliette);
+		return "/client/maglietta/magliette.html";
+	}
+	
+	@GetMapping("/magliettaClient/{id}")
+	public String getMagliettaClient(@PathVariable("id") Long id, Model model) {
+		Maglietta maglietta = magliettaService.findById(id);
+		model.addAttribute("maglietta", maglietta);
+		return "/client/maglietta/maglietta.html";
+	}
+	
+	@GetMapping("/magliettaUser/{id}")
+	public String getMagliettaUser(@PathVariable("id") Long id, Model model) {
+		Maglietta maglietta = magliettaService.findById(id);
+		model.addAttribute("maglietta", maglietta);
+		return "/user/maglietta/maglietta.html";
 	}
 	
 	@GetMapping("/maglietta/{id}")
-	public String getAllMateriali(@PathVariable("id") Long id, Model model) {
+	public String getMaglietta(@PathVariable("id") Long id, Model model) {
 		Maglietta maglietta = magliettaService.findById(id);
 		model.addAttribute("maglietta", maglietta);
-		return "/maglietta/maglietta.html";
+		return "/admin/maglietta/maglietta.html";
 	}
 	
 	@GetMapping("/magliettaForm")
 	public String startMaglietta(Model model) {
 		model.addAttribute("maglietta", new Maglietta());
 		model.addAttribute("materiali", materialeService.findAll());
-		return "/maglietta/magliettaForm.html";
+		return "/admin/maglietta/magliettaForm.html";
 	}
 	
 }

@@ -21,7 +21,7 @@ public class Ordine {
 	private Integer numeroOrdine;
 	
 	@NotBlank
-	private String numeroDiTelefono;
+	private String email;
 	
 	@ManyToMany
 	private List<Maglietta> magliette;
@@ -31,12 +31,11 @@ public class Ordine {
 
 	public Ordine() {}
 
-	public Ordine(Long id, @NotBlank String numeroDiTelefono,
-			List<Maglietta> magliette, List<Accessorio> accessori) {
+	public Ordine(Long id, String email, List<Maglietta> magliette, List<Accessorio> accessori) {
 		super();
 		this.id = id;
+		this.email = email;
 		this.numeroOrdine = Ordine.idOrdine;
-		this.numeroDiTelefono = numeroDiTelefono;
 		this.magliette = magliette;
 		this.accessori = accessori;
 	}
@@ -65,12 +64,12 @@ public class Ordine {
 		this.numeroOrdine = numeroOrdine;
 	}
 
-	public String getNumeroDiTelefono() {
-		return numeroDiTelefono;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setNumeroDiTelefono(String numeroDiTelefono) {
-		this.numeroDiTelefono = numeroDiTelefono;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public List<Maglietta> getMagliette() {

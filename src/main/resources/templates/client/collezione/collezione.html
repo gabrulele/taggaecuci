@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Collezione</title>
+</head>
+
+<body>
+	<div>
+		<a th:href="@{/indexClient}">Home</a>
+	</div>
+	<div>
+		<h4>Dettagli collezione:</h4>
+		<div>
+			<strong>Nome: </strong>
+			<span th:text="${collezione.nome}">Nome</span>
+		</div>
+		<div><strong>Stagione: </strong>
+			<span th:text="${collezione.stagione}">Stagione</span>
+		</div>
+		<div><strong>Magliette in collezione: </strong>
+			<span th:each="maglietta: ${collezione.magliette}">
+				<a th:href="@{'/magliettaClient' + '/' + ${maglietta.id}}" th:text="${maglietta.nome}" />,</a>
+			</span>
+		</div>
+		<div><strong>Accessori in collezione: </strong>
+			<span th:each="accessorio: ${collezione.accessori}">
+				<a th:href="@{'/accessorioClient'+'/'+${accessorio.id}}" th:text="${accessorio.nome}" />,</a>
+			</span>
+		</div>
+	</div>
+</body>
+
+</html>

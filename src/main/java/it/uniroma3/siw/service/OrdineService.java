@@ -69,8 +69,21 @@ public class OrdineService {
 			return ordine.getAccessori().isEmpty();
 		if (ordine.getAccessori().isEmpty() && ordine.getMagliette().isEmpty())
 			return true;
+		
+		int i=0;
 			 
 		return false;
+	}
+
+	public List<Ordine> getOrdiniClient(String email, List<Ordine> ordiniTotali) {
+		List<Ordine> ordiniClient = new ArrayList<Ordine>();
+		
+		for(Ordine ordine: ordiniTotali) {
+			if(ordine.getEmail().equals(email))
+				ordiniClient.add(ordine);
+		}
+		
+		return ordiniClient;
 	}
 
 }

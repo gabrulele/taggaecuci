@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Elenco accessori</title>
+</head>
+
+<body>
+	<div>
+		<a th:href="@{/indexAdmin}">Home</a>
+	</div>
+	<h4>Elenco accessori</h4>
+	<ul>
+		<li th:each="accessorio: ${accessori}">
+			<a th:href="@{'/accessorio'+'/'+${accessorio.id}}" th:text="${accessorio.nome}">Bracciale</a>
+			<a th:href="@{'/toDeleteAccessorio'+'/'+${accessorio.id}}" th:text="rimuovi">Rimuovi</a>
+			<a th:href="@{'/toUpdateAccessorio'+'/'+${accessorio.id}}" th:text="modifica">Modifica</a>
+		</li>
+	</ul>
+</body>
+
+</html>

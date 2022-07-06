@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Registrati</title>
+	<link rel="stylesheet" th:href="@{/css/login.css}" />
+</head>
+
+<body>
+	<a th:href="@{/indexStandard}">Home</a>
+	<form th:action="@{/register}" method="POST">
+
+		<input class="input" type="text" placeholder="username" th:field="${credentials.username}" />
+		<span th:if="${#fields.hasErrors('credentials.username')}" th:errors="${credentials.username}"></span>
+
+		<input class="input" type="password" placeholder="password" th:field="${credentials.password}" />
+		<span th:if="${#fields.hasErrors('credentials.password')}" th:errors="${credentials.password}"></span>
+
+		<input class="input" type="text" placeholder="nome" th:field="${user.nome}" />
+		<span th:if="${#fields.hasErrors('user.nome')}" th:errors="${user.nome}"></span>
+
+		<input class="input" type="text" placeholder="cognome" th:field="${user.cognome}" />
+		<span th:if="${#fields.hasErrors('user.cognome')}" th:errors="${user.cognome}"></span>
+
+		<input class="input" type="text" placeholder="email" th:field="${user.email}" />
+		<span th:if="${#fields.hasErrors('user.email')}" th:errors="${user.email}"></span>
+
+		<span>
+			<strong>Ruolo: </strong>
+			<select th:field="*{credentials.role}">
+				<option th:each="role : ${roles}" th:value="${role}" th:text="${role}" />
+			</select>
+		</span>
+
+		<div th:object="${user}">
+			<div th:if="${#fields.hasGlobalErrors()}">
+				<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">ErroreGlobale</p>
+			</div>
+		</div>
+
+		<div th:object="${credentials}">
+			<div th:if="${#fields.hasGlobalErrors()}">
+				<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">ErroreGlobale</p>
+			</div>
+		</div>
+
+		<button type="submit">Registrati</button>
+
+		</table>
+	</form>
+
+</body>
+
+</html>

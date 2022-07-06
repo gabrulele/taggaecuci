@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Elenco collezioni</title>
+</head>
+
+<body>
+	<div>
+		<a th:href="@{/indexAdmin}">Home</a>
+	</div>
+	<h4>Elenco collezioni</h4>
+	<ul>
+		<li th:each="collezione: ${collezioni}">
+			<a th:href="@{'/collezione'+'/'+${collezione.id}}" th:text="${collezione.nome}">Collezione</a>
+			<a th:href="@{'/toDeleteCollezione'+'/'+${collezione.id}}" th:text="rimuovi">Rimuovi</a>
+			<a th:href="@{'/toUpdateCollezione'+'/'+${collezione.id}}" th:text="modifica">Modifica</a>
+		</li>
+	</ul>
+</body>
+
+</html>

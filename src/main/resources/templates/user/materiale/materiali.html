@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Elenco materiali</title>
+</head>
+
+<body>
+	<div>
+		<a th:href="@{/indexUser}">Home</a>
+	</div>
+	<h4>Elenco materiali</h4>
+	<ul>
+		<li th:each="materiale: ${materiali}">
+			<a th:href="@{'/materialeUser'+'/'+${materiale.id}}" th:text="${materiale.nome}">Cotone</a>
+		</li>
+	</ul>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Elenco magliette</title>
+</head>
+
+<body>
+	<div>
+		<a th:href="@{/indexClient}">Home</a>
+	</div>
+	<h4>Elenco magliette</h4>
+	<ul>
+		<li th:each="maglietta: ${magliette}">
+			<a th:href="@{'/magliettaClient'+'/'+${maglietta.id}}" th:text="${maglietta.nome}">Tee</a>
+		</li>
+	</ul>
+</body>
+
+</html>

@@ -42,7 +42,7 @@ public class AccessorioController {
 	public String toDeleteAccessorio(@PathVariable("id") Long id, Model model) {
 		Accessorio accessorio = accessorioService.findById(id);
 		model.addAttribute("accessorio", accessorio);
-		return "/accessorio/toDeleteAccessorio.html";
+		return "/admin/accessorio/toDeleteAccessorio.html";
 	}
 	
 	@GetMapping("/deleteAccessorio/{id}")
@@ -52,7 +52,7 @@ public class AccessorioController {
 		ordineService.updateAccessoriInOrdini(accessorio.getOrdini(), accessorio);
 		accessorioService.deleteById(id);
 		model.addAttribute("accessori", accessorioService.findAll());
-		return "/accessorio/accessori.html";
+		return "/admin/accessorio/accessori.html";
 	}
 	
 	@GetMapping("/toUpdateAccessorio/{id}")
@@ -60,7 +60,7 @@ public class AccessorioController {
 		Accessorio accessorio = accessorioService.findById(id);
 		model.addAttribute("accessorio", accessorio);
 		model.addAttribute("materiali", materialeService.findAll());
-		return "/accessorio/accessorioFormDiModifica.html";
+		return "/admin/accessorio/accessorioFormDiModifica.html";
 	}
 	
 	@PostMapping("/updateAccessorio/{id}")
@@ -69,9 +69,9 @@ public class AccessorioController {
 		if(!bindingResult.hasErrors()) {
 			accessorioService.save(accessorio);
 			model.addAttribute("accessorio", accessorio);
-			return "/accessorio/accessorio.html";
+			return "/admin/accessorio/accessorio.html";
 		}
-		return "/accessorio/accessorioFormDiModifica.html";
+		return "/admin/accessorio/accessorioFormDiModifica.html";
 	}
 	
 	@PostMapping("/accessorio")
@@ -81,32 +81,59 @@ public class AccessorioController {
 		if(!bindingResult.hasErrors()) {
 			accessorioService.save(accessorio);
 			model.addAttribute("accessorio", accessorio);
-			return "/accessorio/accessorio.html";
+			return "/admin/accessorio/accessorio.html";
 		}
-//		model.addAttribute("accessorio", new Accessorio());
-     	model.addAttribute("materiali", materialeService.findAll());
-		return "/accessorio/accessorioForm.html";
+
+		return "/admin/accessorio/accessorioForm.html";
 	}
 	
 	@GetMapping("/accessori")
-	public String getAllMateriali(Model model) {
+	public String getAllAccessori(Model model) {
 		List<Accessorio> accessori = accessorioService.findAll();
 		model.addAttribute("accessori", accessori);
-		return "/accessorio/accessori.html";
+		return "/admin/accessorio/accessori.html";
+	}
+	
+	@GetMapping("/accessoriUser")
+	public String getAllAccessoriUser(Model model) {
+		List<Accessorio> accessori = accessorioService.findAll();
+		model.addAttribute("accessori", accessori);
+		return "/user/accessorio/accessori.html";
+	}
+	
+	@GetMapping("/accessoriClient")
+	public String getAllAccessoriClient(Model model) {
+		List<Accessorio> accessori = accessorioService.findAll();
+		model.addAttribute("accessori", accessori);
+		return "/client/accessorio/accessori.html";
+	}
+	
+	@GetMapping("/accessorioClient/{id}")
+	public String getAccessorioClient(@PathVariable("id") Long id, Model model) {
+		Accessorio accessorio = accessorioService.findById(id);
+		model.addAttribute("accessorio", accessorio);
+		return "/client/accessorio/accessorio.html";
+	}
+	
+	@GetMapping("/accessorioUser/{id}")
+	public String getAccessorioUser(@PathVariable("id") Long id, Model model) {
+		Accessorio accessorio = accessorioService.findById(id);
+		model.addAttribute("accessorio", accessorio);
+		return "/user/accessorio/accessorio.html";
 	}
 	
 	@GetMapping("/accessorio/{id}")
-	public String getAllMateriali(@PathVariable("id") Long id, Model model) {
+	public String getAccessorio(@PathVariable("id") Long id, Model model) {
 		Accessorio accessorio = accessorioService.findById(id);
 		model.addAttribute("accessorio", accessorio);
-		return "/accessorio/accessorio.html";
+		return "/admin/accessorio/accessorio.html";
 	}
 	
 	@GetMapping("/accessorioForm")
 	public String startAccessorio(Model model) {
 		model.addAttribute("accessorio", new Accessorio());
 		model.addAttribute("materiali", materialeService.findAll());
-		return "/accessorio/accessorioForm.html";
+		return "/admin/accessorio/accessorioForm.html";
 	}
 
 }

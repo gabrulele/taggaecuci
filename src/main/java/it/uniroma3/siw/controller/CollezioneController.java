@@ -38,14 +38,14 @@ public class CollezioneController {
 	public String toDeleteCollezione(@PathVariable("id") Long id, Model model) {
 		Collezione collezione = collezioneService.findById(id);
 		model.addAttribute("collezione", collezione);
-		return "/collezione/toDeleteCollezione.html";
+		return "/admin/collezione/toDeleteCollezione.html";
 	}
 	
 	@GetMapping("/deleteCollezione/{id}")
 	public String deleteCollezione(@PathVariable("id") Long id, Model model) {
 		collezioneService.deleteById(id);
 		model.addAttribute("collezioni", collezioneService.findAll());
-		return "/collezione/collezioni.html";
+		return "/admin/collezione/collezioni.html";
 	}
 	
 	@GetMapping("/toUpdateCollezione/{id}")
@@ -54,7 +54,7 @@ public class CollezioneController {
 		model.addAttribute("collezione", collezione);
 		model.addAttribute("magliette", magliettaService.findAll());
 		model.addAttribute("accessori", accessorioService.findAll());
-		return "/collezione/collezioneFormDiModifica.html";
+		return "/admin/collezione/collezioneFormDiModifica.html";
 	}
 	
 	@PostMapping("/updateCollezione/{id}")
@@ -63,9 +63,9 @@ public class CollezioneController {
 		if(!bindingResult.hasErrors()) {
 			collezioneService.save(collezione);
 			model.addAttribute("collezione", collezione);
-			return "/collezione/collezione.html";
+			return "/admin/collezione/collezione.html";
 		}
-		return "/collezione/collezioneFormDiModifica.html";
+		return "/admin/collezione/collezioneFormDiModifica.html";
 	}
 	
 	@PostMapping("/collezione")
@@ -75,23 +75,51 @@ public class CollezioneController {
 		if(!bindingResult.hasErrors()) {
 			collezioneService.save(collezione);
 			model.addAttribute("collezione", collezione);
-			return "/collezione/collezione.html";
+			return "/admin/collezione/collezione.html";
 		}
-		return "/collezione/collezioneForm.html";
+		return "/admin/collezione/collezioneForm.html";
 	}
 	
 	@GetMapping("/collezioni")
-	public String getAllMateriali(Model model) {
+	public String getAllCollezioni(Model model) {
 		List<Collezione> collezioni = collezioneService.findAll();
 		model.addAttribute("collezioni", collezioni);
-		return "/collezione/collezioni.html";
+		return "/admin/collezione/collezioni.html";
+	}
+	
+	@GetMapping("/collezioniUser")
+	public String getAllCollezioniUser(Model model) {
+		List<Collezione> collezioni = collezioneService.findAll();
+		model.addAttribute("collezioni", collezioni);
+		return "/user/collezione/collezioni.html";
+	}
+	
+	@GetMapping("/collezioniClient")
+	public String getAllCollezioniClient(Model model) {
+		List<Collezione> collezioni = collezioneService.findAll();
+		model.addAttribute("collezioni", collezioni);
+		return "/client/collezione/collezioni.html";
+	}
+	
+	@GetMapping("/collezioneClient/{id}")
+	public String getCollezioneClient(@PathVariable("id") Long id, Model model) {
+		Collezione collezione = collezioneService.findById(id);
+		model.addAttribute("collezione", collezione);
+		return "/client/collezione/collezione.html";
+	}
+	
+	@GetMapping("/collezioneUser/{id}")
+	public String getCollezioneUser(@PathVariable("id") Long id, Model model) {
+		Collezione collezione = collezioneService.findById(id);
+		model.addAttribute("collezione", collezione);
+		return "/user/collezione/collezione.html";
 	}
 	
 	@GetMapping("/collezione/{id}")
-	public String getAllMateriali(@PathVariable("id") Long id, Model model) {
+	public String getCollezione(@PathVariable("id") Long id, Model model) {
 		Collezione collezione = collezioneService.findById(id);
 		model.addAttribute("collezione", collezione);
-		return "/collezione/collezione.html";
+		return "/admin/collezione/collezione.html";
 	}
 	
 	@GetMapping("/collezioneForm")
@@ -99,7 +127,7 @@ public class CollezioneController {
 		model.addAttribute("collezione", new Collezione());
 		model.addAttribute("magliette", magliettaService.findAll());
 		model.addAttribute("accessori", accessorioService.findAll());
-		return "/collezione/collezioneForm.html";
+		return "/admin/collezione/collezioneForm.html";
 	}
 	
 }
