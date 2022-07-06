@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import it.uniroma3.siw.controller.validator.OrdineValidator;
 import it.uniroma3.siw.model.Ordine;
 import it.uniroma3.siw.service.AccessorioService;
 import it.uniroma3.siw.service.MagliettaService;
@@ -28,6 +29,9 @@ public class OrdineController {
 	@Autowired
 	private AccessorioService accessorioService;
 	
+	@Autowired
+	private OrdineValidator ordineValidator;
+	
 	@GetMapping("/toDeleteOrdine/{id}")
 	public String toDeleteOrdine(@PathVariable("id") Long id, Model model) {
 		Ordine ordine = ordineService.findById(id);
@@ -44,6 +48,7 @@ public class OrdineController {
 	
 	@PostMapping("/ordine")
 	public String addOrdine(@Valid @ModelAttribute("ordine") Ordine ordine, BindingResult bindingResult, Model model) {
+		ordineValidator.validate(ordine, bindingResult);
 		
 		if(!bindingResult.hasErrors()) {
 			ordine.setNumeroOrdine(Ordine.getIdOrdine()+1);
@@ -52,6 +57,8 @@ public class OrdineController {
 			model.addAttribute("ordine", ordine);
 			return "/ordine/ordine.html";
 		}
+		model.addAttribute("magliette", magliettaService.findAll());
+		model.addAttribute("accessori", accessorioService.findAll());
 		return "/ordine/ordineForm.html";
 	}
 	

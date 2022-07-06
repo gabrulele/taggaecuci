@@ -1,43 +1,55 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-	<meta charset="UTF-8" />
-	<title>Elenco ordini</title>
-</head>
+<style>
+	table,
+	th,
+	td {
+		border: 1px solid black;
+	}
+</style>
 
 <body>
+
 	<div>
-		<a href="/">Home</a>
+		<a th:href="@{/}">Home</a>
 	</div>
-	<h4>Ordini effettuati</h4>
-	<ul>
-		<li th:each="ordine: ${ordini}">
-			<div>
-				<strong>Id ordine: </strong>
-				<span th:text="${ordine.numeroOrdine}">Id ordine</span>
-			</div>
-			<div>
-				<strong>Recapito telefonico: </strong>
-				<span th:text="${ordine.numeroDiTelefono}">Numero di telefono</span>
-			</div>
-			<div><strong>Magliette ordinate: </strong>
-				<span th:each="maglietta: ${ordine.magliette}">
-					<a th:href="@{'/maglietta' + '/' + ${maglietta.id}}" th:text="${maglietta.nome}" />,</a>
-				</span>
-			</div>
-			<div><strong>Accessori ordinati: </strong>
-				<span th:each="accessorio: ${ordine.accessori}">
-					<a th:href="@{'/accessorio'+'/'+${accessorio.id}}" th:text="${accessorio.nome}" />,</a>
-				</span>
 
-				<div style="position:absolute; left:50px">
-					<span><a th:href="@{'/toDeleteOrdine'+'/'+${ordine.id}}" th:text="rimuovi">Rimuovi</a></span>
-				</div>
+	<h2>Ordini effettuati</h2>
+	<table style="width:60%">
+		<ul>
+			<ta th:each="ordine: ${ordini}">
 
-			</div><br><br>
-		</li>
-	</ul>
+				<tr>
+					<th>Carrello</th>
+					<th>Telefono</th>
+					<th>Ordine id</th>
+					<th>Rimuovi ordine</th>
+				</tr>
+				<tr>
+					<td>
+						<span th:each="maglietta: ${ordine.magliette}">
+							<a th:href="@{'/maglietta' + '/' + ${maglietta.id}}" th:text="${maglietta.nome}" />,</a>
+						</span>
+						<span th:each="accessorio: ${ordine.accessori}">
+							<a th:href="@{'/accessorio' + '/' + ${accessorio.id}}" th:text="${accessorio.nome}" />,</a>
+						</span>
+					</td>
+					<td>
+						<span th:text="${ordine.numeroDiTelefono}"></span>
+					</td>
+					<td>
+						<span th:text="${ordine.numeroOrdine}"></span>
+					</td>
+					<td>
+						<div style="position:relative; left:0px; right:0px;">
+							<a th:href="@{'/toDeleteOrdine'+'/'+${ordine.id}}" th:text="rimuovi">Rimuovi</a>
+						</div>
+					</td>
+
+				</tr>
+
+		</ul>
+	</table>
 </body>
 
 </html>
