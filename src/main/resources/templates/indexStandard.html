@@ -4,6 +4,8 @@
 
 <head>
 	<meta charset="UTF-8" />
+	<link rel="stylesheet" th:href="@{/css/index.css}" />
+	<link rel="icon" th:href="@{/images/logo.jpg}" type="image/x-icon">
 	<title>Tagga&Cuci</title>
 </head>
 
@@ -14,14 +16,26 @@
 		<a th:href="@{/accessoriUser}">Elenco Accessori</a>&nbsp;
 		<a th:href="@{/materialiUser}">Elenco materiali</a>&nbsp;
 
-		<div style="position:absolute; top:7px; right:12px">
+		<div style="position:absolute; top:2px; right:12px">
 			<a th:href="@{/login}"> Login</a>
 		</div>
 	</div>
 	<div>
 		<hr>
-		<h1><strong>Tagga&Cuci</strong></h1>
+		<h1><strong>
+				<center>Tagga&Cuci</center>
+			</strong></h1>
 		</hr>
+		<div>
+			<center><img th:src="@{/images/slider.jpg}" style="width:900px;height:600px"></center>
+		</div>
+		</hr>
+	</div>
+	<div>
+		<h7>"Tagga&Cuci" Ricami personalizzati, riuso di vestiario e oggettistica vintage personalizzabile
+			con ricami fatti a mano. Tel: contatti - Info: email.
+			Immagini e contenuti sono © Copyright dei rispettivi proprietari. E' vietata la riproduzione, anche
+			parziale.</h7>
 	</div>
 </body>
 

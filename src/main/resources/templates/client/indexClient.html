@@ -4,6 +4,8 @@
 
 <head>
 	<meta charset="UTF-8" />
+	<link rel="stylesheet" th:href="@{/css/index.css}" />
+	<link rel="icon" th:href="@{/images/logo.jpg}" type="image/x-icon">
 	<title>Tagga&Cuci</title>
 </head>
 
@@ -12,21 +14,34 @@
 		<a th:href="@{/collezioniClient}">Elenco collezioni</a>&nbsp;
 		<a th:href="@{/maglietteClient}">Elenco magliette</a>&nbsp;
 		<a th:href="@{/accessoriClient}">Elenco Accessori</a>&nbsp;
-		<a th:href="@{/materialiClient}">Elenco materiali</a>&nbsp;<br>
-		
-		<a style=float:right; th:href="@{/logout}"> Logout</a><br>
-      
-		<div style="position:absolute; top:8px; right:115px">
+		<a th:href="@{/materialiClient}">Elenco materiali</a>&nbsp;
+		<br><br>
+		<div style="position:absolute; top:5px; right:8px"><br>
+			<a th:href="@{/logout}"> Logout</a>
+		</div>
+		<div style="position:absolute; top:0px; right:160px">
 			<a th:href="@{/ordineForm}"> Catalogo</a>
 		</div>
-		<div style="position:absolute; top:8px; right:8px">
+		<div style="position:absolute; top:0px; right:8px">
 			<a th:href="@{/ordiniClient}"> Area personale</a>
 		</div>
 	</div>
 	<div>
 		<hr>
-		<h1><strong>Tagga&Cuci</strong></h1>
+		<h1><strong>
+				<center>Tagga&Cuci</center>
+			</strong></h1>
 		</hr>
+		<div style="position:relative; bottom:10px;">
+			<center><img th:src="@{/images/slider.jpg}" style="width:880px;height:590px"></center>
+		</div>
+		</hr>
+	</div>
+	<div>
+		<h7>"Tagga&Cuci" Ricami personalizzati, riuso di vestiario e oggettistica vintage personalizzabile
+			con ricami fatti a mano. Tel: contatti - Info: email.
+			Immagini e contenuti sono © Copyright dei rispettivi proprietari. E' vietata la riproduzione, anche
+			parziale.</h7>
 	</div>
 </body>
 

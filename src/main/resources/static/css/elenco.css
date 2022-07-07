@@ -1,0 +1,26 @@
+a { 
+	text-decoration: none;
+    font-family: 'Courier New', monospace;
+    position: relative;
+    background-color: #add8e6;
+	color: white;
+}
+
+/* Change the color of links on hover */
+a:hover {
+  background-color: #fffff0;
+  color: black;
+  cursor: pointer;
+}
+
+body {
+  background: #add8e6; 
+  font-family: 'Courier New', monospace;   
+}
+
+h4 {
+  position: relative;
+  left: 20px;
+  font-family: 'Courier New', monospace; 
+  font-size: 120%;
+}

@@ -1,0 +1,57 @@
+body {
+	margin: 0;
+}
+
+/* Add a black background color to the top navigation */
+html{
+  background-color: #add8e6;
+}
+
+a { 
+	text-decoration: none;
+    font-family: 'Courier New', monospace;
+	color: black;
+}
+
+/* Change the color of links on hover */
+a:hover {
+  background-color: #fffff0;
+  color: black;
+  cursor: pointer;
+}
+
+h1 {
+	text-decoration: none;
+	background-color: #DFDFDF;
+	text-align: center;
+	padding-left: 15%;
+	padding-right: 15%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+    font-size: 150%;
+	font-family: 'Courier New', monospace;
+	color: white;
+}
+
+hr {
+    color: lightgray;
+    background: blue;
+    font-family: 'Courier New', monospace;
+}
+
+h7 {
+ 	text-decoration: none;
+	background-color: black;
+	text-align: center;
+	padding-left: 25%;
+	padding-right: 25%;
+    position: absolute;
+    bottom: 0px;
+    font-size: 70%;
+	font-family: 'Courier New', monospace;
+	color: white;
+}
+
+
+
+

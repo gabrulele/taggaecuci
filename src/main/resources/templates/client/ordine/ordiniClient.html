@@ -8,6 +8,11 @@
 	}
 </style>
 
+<head>
+	<link rel="stylesheet" th:href="@{/css/elenco.css}" />
+	<link rel="icon" th:href="@{/images/logo.png}" type="image/x-icon">
+</head>
+
 <body>
 
 	<div>
@@ -20,7 +25,7 @@
 	<span th:text="${user.cognome}"></span>
 	<i>&nbsp;&nbsp;email:</i>
 	<span th:text="${user.email}"></span>
-	
+
 	<table style="width:60%">
 		<ul>
 			<ta th:each="ordine: ${ordini}">
@@ -34,10 +39,12 @@
 				<tr>
 					<td>
 						<span th:each="maglietta: ${ordine.magliette}">
-							<a th:href="@{'/magliettaClient' + '/' + ${maglietta.id}}" th:text="${maglietta.nome}" />,</a>
+							<a th:href="@{'/magliettaClient' + '/' + ${maglietta.id}}"
+								th:text="${maglietta.nome}" />,</a>
 						</span>
 						<span th:each="accessorio: ${ordine.accessori}">
-							<a th:href="@{'/accessorioClient' + '/' + ${accessorio.id}}" th:text="${accessorio.nome}" />,</a>
+							<a th:href="@{'/accessorioClient' + '/' + ${accessorio.id}}"
+								th:text="${accessorio.nome}" />,</a>
 						</span>
 					</td>
 					<td>
@@ -56,6 +63,9 @@
 
 		</ul>
 	</table>
+	<div style="position:absolute; bottom:10px; right:10px;">
+		<img th:src="@{/images/logo.jpg}" style="width:120px;height:120px">
+	</div>
 </body>
 
 </html>
