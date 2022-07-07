@@ -15,6 +15,12 @@
 	</div>
 
 	<h2>Ordini effettuati</h2>
+	<i>Client:</i>
+	<span th:text="${user.nome}"></span>
+	<span th:text="${user.cognome}"></span>
+	<i>&nbsp;&nbsp;email:</i>
+	<span th:text="${user.email}"></span>
+	
 	<table style="width:60%">
 		<ul>
 			<ta th:each="ordine: ${ordini}">

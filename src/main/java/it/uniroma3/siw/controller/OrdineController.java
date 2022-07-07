@@ -1,5 +1,7 @@
 package it.uniroma3.siw.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,12 +51,15 @@ public class OrdineController {
 	@GetMapping("/deleteOrdine/{id}")
 	public String deleteOrdine(@PathVariable("id") Long id, Model model) {
 		ordineService.deleteById(id);
-		model.addAttribute("ordini", ordineService.findAll());
-		return "/client/ordine/ordiniClient.html";
+		return "/client/indexClient.html";
 	}
 	
 	@PostMapping("/ordine")
 	public String addOrdine(@Valid @ModelAttribute("ordine") Ordine ordine, BindingResult bindingResult, Model model) {
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		ordine.setEmail(credentials.getUser().getEmail());
+		
 		ordineValidator.validate(ordine, bindingResult);
 		
 		if(!bindingResult.hasErrors()) {
@@ -64,19 +69,11 @@ public class OrdineController {
 			model.addAttribute("ordine", ordine);
 			return "/client/ordine/ordine.html";
 		}
+		
 		model.addAttribute("magliette", magliettaService.findAll());
 		model.addAttribute("accessori", accessorioService.findAll());
-		return "/client/ordine/ordineForm.html";
-//		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-//		
-//		ordine.se
-//		ordine.setNumeroOrdine(Ordine.getIdOrdine()+1);
-//  		Ordine.setIdOrdine(Ordine.getIdOrdine()+1);
-//	    ordineService.save(ordine);
-//        model.addAttribute("ordine", ordine);
-//		return "/client/ordine/ordine.html";
 		
+		return "/client/ordine/ordineForm.html";
 	}
 	
 	@GetMapping("/ordini") 
@@ -85,12 +82,26 @@ public class OrdineController {
 		return "/client/ordine/ordini.html";
 	}
 	
+	@GetMapping("/ordiniClient") 
+	public String getAllOrdiniClient(Model model) {
+		List<Ordine> ordiniTotali = ordineService.findAll();
+		
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		
+		List<Ordine> ordiniClient = ordineService.getOrdiniClient(credentials.getUser().getEmail(), ordiniTotali);
+		
+		model.addAttribute("ordini", ordiniClient);
+		model.addAttribute("user", credentials.getUser());
+		return "/client/ordine/ordiniClient.html";
+	}
+	
 	@GetMapping("/ordineForm") 
 	public String startOrdine(Model model) {
 		model.addAttribute("ordine", new Ordine());
 		model.addAttribute("magliette", magliettaService.findAll());
 		model.addAttribute("accessori", accessorioService.findAll());
-		int i=0;
+		
 		return "/client/ordine/ordineForm.html";
 	}
 	

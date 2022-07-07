@@ -69,8 +69,6 @@ public class OrdineService {
 			return ordine.getAccessori().isEmpty();
 		if (ordine.getAccessori().isEmpty() && ordine.getMagliette().isEmpty())
 			return true;
-		
-		int i=0;
 			 
 		return false;
 	}

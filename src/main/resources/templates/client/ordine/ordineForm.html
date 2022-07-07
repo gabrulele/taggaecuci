@@ -15,11 +15,7 @@
 		<div th:if="${#fields.hasGlobalErrors()}">
 			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">ErroreGlobale</p>
 		</div>
-		<div>
-			<strong>email:</strong>
-			<input class="input" type=text th:field="*{email}" />
-			<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
-		</div>
+
 		<p>
 		<div style="position:relative; left:0px; bottom:0px">
 			<h2><strong>Magliette</strong></h2>

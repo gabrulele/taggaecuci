@@ -21,6 +21,7 @@ public class User {
 	@NotBlank
 	String cognome;
 	
+	@NotBlank
 	String email;
 
 	public Long getId() {

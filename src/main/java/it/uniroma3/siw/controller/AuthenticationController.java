@@ -19,19 +19,14 @@ import it.uniroma3.siw.authentication.AuthConfiguration;
 import it.uniroma3.siw.controller.validator.CredentialsValidator;
 import it.uniroma3.siw.controller.validator.UserValidator;
 import it.uniroma3.siw.model.Credentials;
-import it.uniroma3.siw.model.Ordine;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.service.CredentialsService;
-import it.uniroma3.siw.service.OrdineService;
 
 @Controller
 public class AuthenticationController {
 	
 	@Autowired
 	private CredentialsService credentialsService;
-	
-	@Autowired
-	private OrdineService ordineService;
 
 	@Autowired
 	private UserValidator userValidator;
@@ -75,22 +70,6 @@ public class AuthenticationController {
 			return "client/indexClient.html";
 		}
 		return "indexStandard.html";
-	}
-	
-	@GetMapping("/ordiniClient") 
-	public String getAllOrdiniClient(Model model) {
-		List<Ordine> ordiniTotali = ordineService.findAll();
-		
-		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-		
-		List<Ordine> ordiniClient = ordineService.getOrdiniClient(credentials.getUser().getEmail(), ordiniTotali);
-		
-		int i=0;
-		
-		model.addAttribute("ordini", ordiniClient);
-		
-		return "/client/ordine/ordiniClient.html";
 	}
 
 	@PostMapping("/register")
