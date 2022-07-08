@@ -71,6 +71,8 @@ public class MagliettaController {
 			model.addAttribute("maglietta", maglietta);
 			return "/admin/maglietta/maglietta.html";
 		}
+		
+		model.addAttribute("materiali", materialeService.findAll());
 		return "/admin/maglietta/magliettaFormDiModifica.html";
 	}
 	
@@ -83,6 +85,8 @@ public class MagliettaController {
 			model.addAttribute("maglietta", maglietta);
 			return "admin/maglietta/maglietta.html";
 		}
+		
+		model.addAttribute("materiali", materialeService.findAll());
 		return "/admin/maglietta/magliettaForm.html";
 	}
 	

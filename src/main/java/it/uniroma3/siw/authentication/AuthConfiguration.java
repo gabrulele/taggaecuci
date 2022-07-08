@@ -33,16 +33,16 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
 
 		http.authorizeRequests()  //da qui si definisce chi può accedere a cosa
 
-		.antMatchers(HttpMethod.GET, "/indexStandard", "/", "/indexUser", "/default", "/register", "/collezioniUser", "/maglietteUser", "/accessoriUser", "/materialiUser",
+		.antMatchers(HttpMethod.GET, "/indexStandard", "/", "/default", "/register", "/collezioniUser", "/maglietteUser", "/accessoriUser", "/materialiUser",
 				"/login", "/css/**", "/images/**").permitAll()
 		.antMatchers(HttpMethod.GET, "/collezione/{id}", "/maglietta/{id}", "/accessorio/{id}", "/materiale/{id}",
 				"/collezioneUser/{id}", "/magliettaUser/{id}", "/accessorioUser/{id}", "/materialeUser/{id}").permitAll()
-		.antMatchers(HttpMethod.POST, "/login", "/register", "/ordineForm").permitAll()
+		.antMatchers(HttpMethod.POST, "/login", "/register").permitAll()
 
-		.antMatchers(HttpMethod.GET, "/client/**", "/indexClient", "/collezioniClient", "/maglietteClient", "/accessoriClient", "/materialiClient",
-				"/magliettaClient/{id}", "/accessorioClient/{id}", "/materialeClient/{id}","/collezioneClient/{id}", "/ordine").hasAnyAuthority(USER_ROLE,ADMIN_ROLE)
+		.antMatchers(HttpMethod.GET,"/indexUser", "/client/**", "/indexClient", "/collezioniClient", "/maglietteClient", "/accessoriClient", "/materialiClient",
+				"/magliettaClient/{id}", "/accessorioClient/{id}", "/materialeClient/{id}","/collezioneClient/{id}", "/ordine","/ordineForm", "/ordiniClient").hasAnyAuthority(USER_ROLE,ADMIN_ROLE)
 		
-		.antMatchers(HttpMethod.GET, "/admin/**", "/indexAdmin", "/initializer").hasAnyAuthority(ADMIN_ROLE)
+		.antMatchers(HttpMethod.GET, "/admin/**", "/indexAdmin", "/initializer", "/ordini").hasAnyAuthority(ADMIN_ROLE)
 		.antMatchers(HttpMethod.POST, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
 
 		.anyRequest().authenticated()

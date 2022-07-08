@@ -65,6 +65,9 @@ public class CollezioneController {
 			model.addAttribute("collezione", collezione);
 			return "/admin/collezione/collezione.html";
 		}
+		
+		model.addAttribute("magliette", magliettaService.findAll());
+		model.addAttribute("accessori", accessorioService.findAll());
 		return "/admin/collezione/collezioneFormDiModifica.html";
 	}
 	
@@ -77,6 +80,9 @@ public class CollezioneController {
 			model.addAttribute("collezione", collezione);
 			return "/admin/collezione/collezione.html";
 		}
+		
+		model.addAttribute("magliette", magliettaService.findAll());
+		model.addAttribute("accessori", accessorioService.findAll());
 		return "/admin/collezione/collezioneForm.html";
 	}
 	

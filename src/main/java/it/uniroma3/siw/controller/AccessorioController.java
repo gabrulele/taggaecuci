@@ -71,6 +71,8 @@ public class AccessorioController {
 			model.addAttribute("accessorio", accessorio);
 			return "/admin/accessorio/accessorio.html";
 		}
+		
+		model.addAttribute("materiali", materialeService.findAll());
 		return "/admin/accessorio/accessorioFormDiModifica.html";
 	}
 	
@@ -83,7 +85,8 @@ public class AccessorioController {
 			model.addAttribute("accessorio", accessorio);
 			return "/admin/accessorio/accessorio.html";
 		}
-
+		
+		model.addAttribute("materiali", materialeService.findAll());
 		return "/admin/accessorio/accessorioForm.html";
 	}
 	
