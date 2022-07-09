@@ -11,19 +11,19 @@
 	<a th:href="@{/indexStandard}">Home</a>
 	<form th:action="@{/register}" method="POST">
 
-		<input class="input" type="text" placeholder="username" th:field="${credentials.username}" /><br>
+		<input class="input" type="text" placeholder="username"  required th:field="${credentials.username}" /><br>
 		<span th:if="${#fields.hasErrors('credentials.username')}" th:errors="${credentials.username}"></span>
 
-		<input class="input" type="password" placeholder="password" th:field="${credentials.password}" /><br>
+		<input class="input" type="password" placeholder="password" required th:field="${credentials.password}" /><br>
 		<span th:if="${#fields.hasErrors('credentials.password')}" th:errors="${credentials.password}"></span>
 
-		<input class="input" type="text" placeholder="nome" th:field="${user.nome}" /><br>
+		<input class="input" type="text" placeholder="nome" required th:field="${user.nome}" /><br>
 		<span th:if="${#fields.hasErrors('user.nome')}" th:errors="${user.nome}"></span>
 
-		<input class="input" type="text" placeholder="cognome" th:field="${user.cognome}" /><br>
+		<input class="input" type="text" placeholder="cognome" required th:field="${user.cognome}" /><br>
 		<span th:if="${#fields.hasErrors('user.cognome')}" th:errors="${user.cognome}"></span>
 
-		<input class="input" type="text" placeholder="email" th:field="${user.email}" /><br>
+		<input class="input" type="text" placeholder="email" required th:field="${user.email}" /><br>
 		<span th:if="${#fields.hasErrors('user.email')}" th:errors="${user.email}"></span><br>
 
 		<span>

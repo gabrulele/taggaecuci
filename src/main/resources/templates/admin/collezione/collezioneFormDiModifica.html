@@ -33,7 +33,7 @@
 					th:value="${maglietta.id}" th:field="*{magliette}" />
 			</label>
 		</p>
-				<p>
+		<p>
 			<label>Accessori:
 				<input type="checkbox" name="accessori" th:each="accessorio: ${accessori}" th:text="${accessorio.nome}"
 					th:value="${accessorio.id}" th:field="*{accessori}" />

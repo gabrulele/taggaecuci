@@ -48,6 +48,7 @@ public class MaterialeController {
 	
 	@PostMapping("/updateMateriale/{id}")
 	public String updateMateriale(@Valid @ModelAttribute("materiale") Materiale materiale, BindingResult bindingResult, Model model) {
+		materialeValidator.validate(materiale, bindingResult);
 		
 		if(!bindingResult.hasErrors()) {
 			materialeService.save(materiale);

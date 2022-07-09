@@ -65,6 +65,7 @@ public class MagliettaController {
 	
 	@PostMapping("/updateMaglietta/{id}")
 	public String updateMaglietta(@Valid @ModelAttribute("maglietta") Maglietta maglietta, BindingResult bindingResult, Model model) {
+		magliettaValidator.validate(maglietta, bindingResult);
 		
 		if(!bindingResult.hasErrors()) {
 			magliettaService.save(maglietta);

@@ -25,6 +25,7 @@
 		<div>
 			Stagione:
 			<input class="input" type=text th:field="*{stagione}" />
+			<div th:if="${#fields.hasErrors('stagione')}" th:errors="*{stagione}"></div>
 		</div>
 		<p>
 			<label>Magliette:

@@ -59,6 +59,7 @@ public class CollezioneController {
 	
 	@PostMapping("/updateCollezione/{id}")
 	public String updateCollezione(@Valid @ModelAttribute("collezione") Collezione collezione, BindingResult bindingResult, Model model) {
+		collezioneValidator.validate(collezione, bindingResult);
 		
 		if(!bindingResult.hasErrors()) {
 			collezioneService.save(collezione);

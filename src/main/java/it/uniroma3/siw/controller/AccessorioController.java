@@ -65,6 +65,7 @@ public class AccessorioController {
 	
 	@PostMapping("/updateAccessorio/{id}")
 	public String updateAccessorio(@Valid @ModelAttribute("accessorio") Accessorio accessorio, BindingResult bindingResult, Model model) {
+		accessorioValidator.validate(accessorio, bindingResult);
 		
 		if(!bindingResult.hasErrors()) {
 			accessorioService.save(accessorio);

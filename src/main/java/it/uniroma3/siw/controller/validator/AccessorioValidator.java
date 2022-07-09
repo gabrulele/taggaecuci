@@ -22,7 +22,7 @@ public class AccessorioValidator implements Validator {
 	@Override
 	public void validate(Object o, Errors errors) {
 		Accessorio accessorio = (Accessorio) o;
-		if(accessorioService.alreadyExists(accessorio))
+		if(accessorioService.alreadyExists(accessorio)) 
 			errors.reject("accessorio.duplicato");
 	}
 
