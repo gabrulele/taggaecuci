@@ -78,6 +78,7 @@ public class AuthenticationController {
 			Model model) {
 
 		userValidator.validate(user, userBindingResult);
+		userValidator.validateEmail(user, userBindingResult);
 		credentialsValidator.validate(credentials, credentialsBindingResult);
 		
 		if (!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {

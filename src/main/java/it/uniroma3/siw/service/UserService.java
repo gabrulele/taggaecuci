@@ -41,5 +41,9 @@ public class UserService {
 		}
 		return false;
 	}
+
+	public boolean validaEmail(User user) {
+		return userRepository.existsByEmail(user.getEmail());
+	}
 	
 }

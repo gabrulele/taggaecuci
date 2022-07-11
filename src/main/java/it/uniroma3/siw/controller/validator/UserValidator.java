@@ -25,4 +25,9 @@ public class UserValidator implements Validator {
 			errors.reject("user.duplicato");
 	}
 	
+	public void validateEmail(Object user, Errors errors) {
+		if (this.userService.validaEmail((User) user))
+			errors.reject("email.duplicato");
+	}
+	
 }
